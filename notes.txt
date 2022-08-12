@@ -1,0 +1,21 @@
+# Notes about the data ELT process:
+
+The SQL DB uses timestamp as its datatype. 
+This is innately different from the Unix TimeStamp(which is a number). 
+You cannot store a Unix TimeStamp in a SQL Timestamp field. 
+You can store the date that you want and then Cast of Convert it upon display or integration. 
+You could create a conversion function to accomplish this and call that function when you need the SQL timestamp converted.
+
+ #Assuming the psql command-line tool, you may use \copy instead of copy.
+
+\copy opens the file and feeds the contents to the server, whereas copy tells the server the open the file itself and read it, 
+which may be problematic permission-wise, 
+or even impossible if client and server run on different machines with no file sharing in-between.
+
+-> pass volume to docker
+
+# problems related to unix nanoseconds conversions
+couldt insert data direct into table as timstamp. Had to insert as string, format then convert to timestamp.
+
+#SQL Error [22P04]: ERROR: extra data after last expected column
+
