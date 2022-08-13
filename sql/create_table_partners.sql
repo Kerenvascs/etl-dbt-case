@@ -3,7 +3,7 @@ CREATE TABLE partners (
   created_at VARCHAR(50),
   updated_at VARCHAR(50),
   partner_type VARCHAR(50),
-  lead_sales_contact VARCHAR(255),
+  lead_sales_contact VARCHAR(50),
   PRIMARY KEY (id)
 )
 

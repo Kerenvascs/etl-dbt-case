@@ -19,3 +19,15 @@ couldt insert data direct into table as timstamp. Had to insert as string, forma
 
 #SQL Error [22P04]: ERROR: extra data after last expected column
 
+
+- **Add model_pk_id**: *MD5(hub_code || forecast_date) AS model_pk_id.*
+
+The model_pk_id is the Primary Key used for the unique_key tag in the header.
+The MD5 function creates a hash value based on the string, converting model_pk_id to a 32-character string that is a text representation of the hexadecimal value of a 128-bit checksum.
+All incremental table MUST have a correct model_pk_id attribute. This is necessary to guarantee the removal of duplications
+
+- **Add extra columns for date tracking** (pre requisite of incremental tables):
+    - _sdc_extracted_at AS **source_updated_dt**: source_updated_dt is a datetime type, that will be used as our reference to what is new data.   
+    - current_timestamp AS **model_updated_dt**: It is an log attribute, registering when a given line was inserted in the table. 
+    The recommendation is to use current_timestamp to get the datetime value.
+
