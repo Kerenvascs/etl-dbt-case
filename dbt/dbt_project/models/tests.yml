@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_partners
+    columns:
+     - name: model_pk_id
+       tests:
+        - unique
+        - not_null
+     - name: partners_creation_date
+       tests:
+        - not_null  
+     - name: partners_update_date
+       tests:
+        - not_null
+
+  - name: stg_referrals
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: partner_id
+        tests:
+          - not_null
+      - name: referral_creation_date
+        tests:
+          - not_null
+      - name: referral_update_date
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['pending','disinterested','successful']
+
+  - name: stg_sales_people
+    columns:
+      - name: name
+        tests:
+          - unique
+          - not_null
+      - name: country
+        tests:
+          - accepted_values:
+              values: ['Singapore', 'HongKong', 'UK']
+

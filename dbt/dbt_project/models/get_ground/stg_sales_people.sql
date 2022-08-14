@@ -4,7 +4,7 @@
 WITH 
     sales_people AS (
         SELECT
-            name AS partner_name, 
+            name, 
             country
         FROM sales_people
     )
