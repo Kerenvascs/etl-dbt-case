@@ -2,47 +2,81 @@ version: 2
 
 models:
   - name: stg_partners
+    description: This table contains information about get ground partners.
+
     columns:
      - name: model_pk_id
+       description: This is the primary key, a unique indentifier formed by the id and creation date.
        tests:
         - unique
         - not_null
+
+     - name: id
+       description: This is a unique identifier of the partner.
+       tests:
+          - unique
+          - not_null
+
      - name: partners_creation_date
+       description: This is a timestamp referring to the partner registration.
        tests:
         - not_null  
+
      - name: partners_update_date
+       description: This is a timestamp referring to the status update.
        tests:
         - not_null
 
   - name: stg_referrals
+    description: This table contains information about partners referrals.
+    
     columns:
-      - name: id
-        tests:
+     - name: model_pk_id
+       description: This is the primary key, a unique indentifier formed by the id and creation date.
+       tests:
+        - unique
+        - not_null
+
+     - name: id
+       description: This is a unique identifier of the referral.
+       tests:
           - unique
           - not_null
-      - name: partner_id
-        tests:
+
+     - name: partner_id
+       description: This is a unique identifier of the partner.
+       tests:
           - not_null
-      - name: referral_creation_date
-        tests:
+
+     - name: referral_creation_date
+       description: This is a timestamp of the referral record.
+       tests:
           - not_null
-      - name: referral_update_date
-        tests:
+
+     - name: referral_update_date
+       description: This is a timestamp referring to the status update.
+       tests:
           - not_null
-      - name: status
-        tests:
+
+     - name: status
+       tests:
           - not_null
           - accepted_values:
               values: ['pending','disinterested','successful']
 
   - name: stg_sales_people
+    description: This table contains information about sales people.
+
     columns:
-      - name: name
-        tests:
+     - name: name
+       description: Partner name.
+       tests:
           - unique
           - not_null
-      - name: country
-        tests:
+
+     - name: country
+       description: Partner country.
+       tests:
           - accepted_values:
               values: ['Singapore', 'HongKong', 'UK']
 
