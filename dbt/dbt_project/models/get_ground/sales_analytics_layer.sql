@@ -32,14 +32,13 @@ WITH
         -- columns from model Referrals
         referrals.id AS referral_id,
         referrals.company_id,
-        referrals.partner_id,
         referrals.consultant_id,
         referrals.status,
         referrals.is_outbound,
         referrals.referral_creation_date,
         referrals.referral_update_date,
         -- Columns from  model Sales people
-        sales_people.name AS partner_name,
+        sales_people.name AS sales_contact_name,
         sales_people.country
 
     FROM partners

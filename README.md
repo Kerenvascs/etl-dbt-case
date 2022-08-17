@@ -57,3 +57,46 @@ We currently have sales people in the UK, Singapore and Hong Kong.
 3. Analyse the data using SQL. Be sure to include your investigative thought process, findings, limitations, and assumptions.
 
 4. Based on your analysis, how would you reccomend GG improve the quality of the analyses we can deliver.
+
+## Environment configuration
+### Anaconda installation
+https://docs.anaconda.com/anaconda/install/linux/
+
+### Conda environment
+```
+conda create -n test-dbt 
+conda activate test-dbt 
+pip install -r requirements.txt
+```
+
+## Local execution of Postgres
+```
+echo 'installing docker' 
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+docker --version
+
+chmod 777 /var/run/docker.sock
+docker run hello-world
+
+echo 'installing docker-compose' 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+cd /home/developer/Desktop/testes/tech-tests/docker-compose.yml
+docker compose up
+```
+
+## Installation of dbt
+```
+pip install dbt-postgres
+dbt --version #1.2.0 - Up to date!
+
+dbt init dbt_project
+# Config profile yml to sync with dbt_project yml according to the adapter, in our case is postgres.
+# then run dbt_debug to check connection
+```
+
